@@ -1,3 +1,9 @@
+<?php 
+	include('database/header.php');
+	include('services/session.php');
+	include('database/footer.php');
+?>
+
 <html>
 <head>
 <script>
@@ -26,6 +32,8 @@
 </script>
 </head>
 <body onload="loadData()">
+	<?php echo "Welcome, {$_SESSION['username']}" ?>
+	<a href="services/logout.php">Log Out</a>
 	<table id="data">
 	</table>
 	<a href="new.html">Create New</a>

@@ -1,13 +1,7 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "password";
-	$dbname = "yao";
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	include('../database/header.php');
+
 	$resArray = array();
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
 	$sql_select = "SELECT id, title, content, created_at FROM news";
 	$result = $conn->query($sql_select);
 	if ($result->num_rows > 0) {
@@ -19,5 +13,6 @@
 	    $result = "[]";
 	}
 	echo $result;
-	$conn->close();
+	
+	include('../database/footer.php');
 ?>

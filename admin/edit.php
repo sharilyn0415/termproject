@@ -1,19 +1,13 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "password";
-	$dbname = "yao";
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	include('database/header.php');
+	include('services/session.php');
 	if (isset($_GET['id'])) {
 		$sql = "SELECT * FROM news WHERE id = {$_GET['id']}";
 		$result = $conn->query($sql);
 		$res = $result->fetch_assoc();
 		$conn->close();
 	}
+	include('database/footer.php');
 ?>
 <html>
 <head>
