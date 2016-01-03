@@ -1,10 +1,11 @@
 <?php
 	include('../database/header.php');
 	if (isset($_POST['title']) && isset($_POST['content'])) {
-		$sql = "INSERT INTO news (title, content, created_at) VALUES ('{$_POST['title']}', '{$_POST['content']}', now())"; 
-		if ($conn->query($sql) === TRUE) {
-		    echo "New record created successfully";
-		    header( 'Location: ../index.html' );
+		$stmt = $conn->prepare("INSERT INTO news (title, content, created_at) VALUES (?, ?, now())");
+		$stmt->bind_param("ss", $_POST['title'], $_POST['content']);
+
+		if ($stmt->execute() == TRUE) {
+		    header( 'Location: ../index.php' );
 		} else {
 		    echo "Error: " . $sql . "<br>" . $conn->error;
 		}

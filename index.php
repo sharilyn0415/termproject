@@ -6,6 +6,9 @@
 	contain different. Provide a sign in /signup option in the landing page. 
 	On page to add html forms and process the form data using php on the server. 
 	Use javascript, angJavscript and PHP code where ever needed  -->
+<?php
+	session_start();
+?>
 <html>
 <head>
 	<link href="style.css" rel="stylesheet" type="text/css">
@@ -20,14 +23,14 @@
 				}
 				var announcements = JSON.parse(xhttp.responseText);
 				if(announcements.length == 0) {
-					var res = "<th>There is no announcement!<th>";
+					var res = "<h1>There is no announcement!<h1>";
 				} else {
-					var res = "<tr><td>ID</td><td>Title</td><td>Content</td><td>Created at</td></tr>";
+					var res = "<tr><td>ID</td><td>Title</td><td>Create at</td><td>Content</td></tr>";
 					for(var i = 0; i < announcements.length; i++) {
-						res += "<tr><td>"+announcements[i].id+"</td><td>"+announcements[i].title+"</td><td>"+announcements[i].content+"</td><td>"+announcements[i].created_at+"</td></tr>";
+						res += "<tr><td>"+announcements[i].id+"</td><td>"+announcements[i].title+"</td><td>"+announcements[i].created_at+"</td><td>"+announcements[i].content+"</td></tr>";
 					}
 				}
-				document.getElementById("data").innerHTML = res;
+				document.getElementById("title").innerHTML = res;
 			}
 		};
 		xhttp.open("GET", "admin/services/index.php", true);
@@ -38,37 +41,35 @@
 <body onload="loadData()">
 	<div id="container">
 		<div id="header">
-			<a href="http://www.website.com">This is the header</a>
-			<div class="HorizLinks">
-				<ul>
-					<li><a href="http://www.website.com">Header Link 1</a></li>
-					<li><a href="http://www.website.com">Header Link 2</a></li>
-					<li><a href="http://www.website.com">Header Link 3</a></li>
-					<li><a href="http://www.website.com">Header Link 4</a></li>
-				</ul>
-			</div>
-			<p>Header Text</p>
-			<p class="smalltext">Small Text</p>
-
-		</div>
-		<div id="horizontalnav">
+			<div id="horizontalnav">
 			<div class="navlinks">
 				<ul>
-					<li><a href="admin/createNew.php">Create New</a></li>
-					<li><a href="http://www.website.com">Nav Link 2</a></li>
-					<li><a href="http://www.website.com">Nav Link 3</a></li>
-					<li><a href="http://www.website.com">Nav Link 4</a></li>
+					<li><a href="index.php">Home</a></li>
+					<li><?php 
+							if(isset($_SESSION['username'])){
+								echo "<a href='admin/services/logout.php'>Log Out</a>";
+							} else{
+								echo "<a href='login.php'>Log in</a>";
+							}
+						?></li>
+					<li><a href="admin/new.php">Create New</a></li>
+					<li><a href="admin/index.php">Manage</a></li>
 				</ul>
 			</div>
 		</div>
-		<div id="leftnav">This is the leftnav</div>
-			<div id="rightnav">This is the right nav</div>
-				<div id="body">Please Sign In: <br>
-					<div class="data">
-						<table id="data"></table>
-					</div>
-				</div>
-				<div id="footer">This is the footer</div>
+		</div>
+		
+		<div id="leftnav">
+			<div class="leftbox">
+				<a  class="btn btn-primary" href="login.php">Admin Access</a>
+				<p><br><span class="glyphicon glyphicon-log-in"></span> Please log in for more options. Once you login, you'll be able to create, edit, and delete with the announcements.</p> 
+			</div>
+		</div>
+		<div id="body">
+			<h1>Announcements</h1>
+			<table class="table table-hover" id="title"></table>
+		</div>
+		<div id="footer">This is the footer</div>
 	</div>
 </body>
 </html>

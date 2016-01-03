@@ -1,10 +1,11 @@
 <?php
 	include('../database/header.php');
 	if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['id'])) {
-		$sql = "UPDATE news SET title ='{$_POST['title']}', content ='{$_POST['content']}' WHERE id = {$_POST['id']}";
-		if ($conn->query($sql) === TRUE) {
-		    echo "Update successfully";
-		    header( 'Location: ../index.html' );
+		$stmt = $conn->prepare("UPDATE news SET title = ?, content = ? WHERE id = ?");
+		$stmt->bind_param("ssi", $_POST['title'], $_POST['content'], $_POST['id']);
+
+		if ($stmt->execute() == TRUE) {
+		    header( 'Location: ../index.php' );
 		} else {
 		    echo "Error: " . $sql . "<br>" . $conn->error;
 		}

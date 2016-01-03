@@ -3,5 +3,5 @@
 	if (isset($_SESSION['username'])) {
 		unset($_SESSION['username']);
 	}
-	header('Location: ../../index.html');
+	header('Location: ../../index.php');
 ?>
