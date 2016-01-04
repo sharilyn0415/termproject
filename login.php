@@ -24,7 +24,9 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li><a  class="btn btn-default" href="admin/new.php">Create New</a></li>
 					<li><a  class="btn btn-default" href="admin/index.php">Manage page</a></li>
-					<li><a  class="btn btn-danger" href="admin/services/logout.php">Log Out</a></li>
+					<?php if(isset($_SESSION['username'])) { ?>
+						<li><a class="btn btn-danger" href="services/logout.php">Log Out</a></li>				
+					<?php } ?>
 				</ul>	
 			</div>
 		</div>

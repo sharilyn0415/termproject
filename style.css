@@ -14,7 +14,7 @@ border-bottom: 2px solid #000000;
 position: absolute; top: 77px; left: 180px; 
 }
 .HorizLinks ul { 
-margin: 0px; 
+margin: 10px; 
 }
 .HorizLinks li {
 margin: 0px 15px 0px 0px;
@@ -23,7 +23,7 @@ display: inline;
 }
 #horizontalnav  {
 width: 1280px;
-height: 30px;
+height: 40px;
 position: relative;
 background-color: #ebf0fa;
 border-bottom: 2px solid #000000;
@@ -72,30 +72,18 @@ padding:10px;
 margin: auto;
 margin-top: 20px;
 width: 800px;
-padding: 10px 0px 0px 10px;
+padding: 10px 0px 0px 30px;
 }
-
+#background{
+background-image: url(images/board.jpg);
+background-size:100% 100%; 
+background-repeat: no-repeat;
+opacity:0.9;"
+}
 #footer  {
 clear: both;
 background-color: #D1C0A7;
 }
 
-.data  {
-
-margin-top: 10px;
-padding: 5px 5px 5px 5px;
-background-color: #dddddd;
-border: 2px solid #d22929;
-width: 800px;
-color: #000000;
-
-}
-
-h2  { 
-font-size: 20px;
-color: #cc0000;
-padding: 10px;
-font-family: Verdana;
-}
 
 

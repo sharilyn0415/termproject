@@ -56,18 +56,17 @@
 			<div class="leftbox">
 				<?php echo "Welcome, <span style='text-decoration: underline'>{$_SESSION['username']}</span> <span class='glyphicon glyphicon-user'></span>" ?>
 				<ul class="nav nav-pills nav-stacked">
-					<li><a  class="btn btn-default" href="new.php">Create New</a></li>
-					<li><a  class="btn btn-default" href="index.php">Manage page</a></li>
-					<li><a  class="btn btn-danger" href="services/logout.php">Log Out</a></li>
+					<li><a class="btn btn-default" href="new.php">Create New</a></li>
+					<li><a class="btn btn-default" href="index.php">Manage page</a></li>
+					<li><a class="btn btn-danger" href="services/logout.php">Log Out</a></li>
 				</ul>
 			</div>	
 		</div>
-		<div id="body" >
+		<div id="body">
 			<h1>Manage System</h1>
 			<table id="data" class="table table-hover"></table >
 		</div>
 		<div id="footer">This is the footer</div>
-	</div>
 </body>
 </html>
 

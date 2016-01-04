@@ -11,8 +11,8 @@
 ?>
 <html>
 <head>
-	<link href="style.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href="style.css" rel="stylesheet" type="text/css">
 	<script>
 		var loadData = function() {
 		var xhttp = new XMLHttpRequest();
@@ -25,10 +25,11 @@
 				if(announcements.length == 0) {
 					var res = "<h1>There is no announcement!<h1>";
 				} else {
-					var res = "<tr><td>ID</td><td>Title</td><td>Create at</td><td>Content</td></tr>";
+					var res = "<thead><tr><th>Title</th><th>Content</th><th>Create at</th></tr></thead>";
 					for(var i = 0; i < announcements.length; i++) {
-						res += "<tr><td>"+announcements[i].id+"</td><td>"+announcements[i].title+"</td><td>"+announcements[i].created_at+"</td><td>"+announcements[i].content+"</td></tr>";
+						res += "<tr><td>"+announcements[i].title+"</td><td>"+announcements[i].content+"</td><td>"+announcements[i].created_at+"</td></tr>";
 					}
+
 				}
 				document.getElementById("title").innerHTML = res;
 			}
@@ -42,32 +43,35 @@
 	<div id="container">
 		<div id="header">
 			<div id="horizontalnav">
-			<div class="navlinks">
-				<ul>
-					<li><a href="index.php">Home</a></li>
-					<li><?php 
-							if(isset($_SESSION['username'])){
-								echo "<a href='admin/services/logout.php'>Log Out</a>";
-							} else{
-								echo "<a href='login.php'>Log in</a>";
-							}
-						?></li>
-					<li><a href="admin/new.php">Create New</a></li>
-					<li><a href="admin/index.php">Manage</a></li>
-				</ul>
+				<div class="navlinks">
+					<ul>
+						<li><a href="index.php">Home</a></li>
+						<li><?php 
+								if(isset($_SESSION['username'])){
+									echo "<a href='admin/services/logout.php'>Log Out</a>";
+								} else{
+									echo "<a href='login.php'>Log in</a>";
+								}
+							?></li>
+						<li><a href="admin/new.php">Create New</a></li>
+						<li><a href="admin/index.php">Manage</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
-		</div>
-		
-		<div id="leftnav">
-			<div class="leftbox">
-				<a  class="btn btn-primary" href="login.php">Admin Access</a>
-				<p><br><span class="glyphicon glyphicon-log-in"></span> Please log in for more options. Once you login, you'll be able to create, edit, and delete with the announcements.</p> 
+		<div class="row">
+			<div class="col-md-2">
+				<div style="margin:50px 20px 0px 20px">
+					<a class="btn btn-primary" href="login.php">Admin Access</a>
+					<p><br><span class="glyphicon glyphicon-log-in"></span> Please log in for more options. Once you login, you'll be able to create, edit, and delete with the announcements.</p> 
+				</div>
 			</div>
-		</div>
-		<div id="body">
-			<h1>Announcements</h1>
-			<table class="table table-hover" id="title"></table>
+			<div class="col-md-10" id="background">
+				<div style="margin:20px">
+					<h1 >Announcements</h1>
+					<table class="table table-hover" id="title"></table>
+				</div>	
+			</div>
 		</div>
 		<div id="footer">This is the footer</div>
 	</div>
